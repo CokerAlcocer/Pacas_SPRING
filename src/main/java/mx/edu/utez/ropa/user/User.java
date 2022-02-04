@@ -13,8 +13,14 @@ public class User {
     private long id;
 
     @OneToOne
-    @JoinColumn(name = "person_id", unique = true)
+    @JoinColumn(name = "person_id", unique = true, nullable = false)
     private Person person;
+
+    @Column(columnDefinition = "text", unique = true, nullable = false)
+    private String username;
+
+    @Column(columnDefinition = "text", nullable = false)
+    private String password;
 
     @ManyToMany(mappedBy = "users")
     private List<Rol> authorities;
